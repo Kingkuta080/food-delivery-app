@@ -99,7 +99,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: SCREEN_WIDTH * 0.2, // Extra padding for tab bar
+    paddingBottom: 90, // Fixed padding for tab bar (70px height + 20px extra)
   },
   categoriesScroll: {
     marginBottom: SCREEN_WIDTH * 0.06,

@@ -27,7 +27,7 @@ const LunchScreen = () => {
 
     // Navigate to option screen after 3 seconds
     const timer = setTimeout(() => {
-      router.replace('/lunch/optionScreen')
+      router.replace('/launch/optionScreen')
     }, 3000)
 
     return () => clearTimeout(timer)
