@@ -1,9 +1,12 @@
 import { Image } from 'expo-image'
+import { useRouter } from 'expo-router'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors } from '../utils/colors'
 
 const OptionScreen = () => {
+  const router = useRouter()
+
   return (
     <View style={styles.container}>
       {/* Logo Section */}
@@ -27,6 +30,7 @@ const OptionScreen = () => {
         <TouchableOpacity 
           style={styles.loginButton}
           activeOpacity={0.8}
+          onPress={() => router.push('/(auth)/login')}
         >
           <Text style={styles.loginButtonText}>Log In</Text>
         </TouchableOpacity>
@@ -34,6 +38,7 @@ const OptionScreen = () => {
         <TouchableOpacity 
           style={styles.signUpButton}
           activeOpacity={0.8}
+          onPress={() => router.push('/(auth)/newAccount')}
         >
           <Text style={styles.signUpButtonText}>Sign Up</Text>
         </TouchableOpacity>

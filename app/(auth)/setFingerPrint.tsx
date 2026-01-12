@@ -1,12 +1,15 @@
 import { Ionicons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import React from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors } from '../utils/colors'
 
 const SetFingerPrint = () => {
+  const router = useRouter()
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       {/* Yellow Header Section */}
       <View style={styles.headerSection}>
         {/* Back Button */}
@@ -40,10 +43,18 @@ const SetFingerPrint = () => {
 
               {/* Action Buttons */}
               <View style={styles.buttonsContainer}>
-                <TouchableOpacity style={styles.skipButton} activeOpacity={0.8}>
+                <TouchableOpacity 
+                  style={styles.skipButton} 
+                  activeOpacity={0.8}
+                  onPress={() => router.replace('/(tabs)/Home')}
+                >
                   <Text style={styles.skipButtonText}>Skip</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.continueButton} activeOpacity={0.8}>
+                <TouchableOpacity 
+                  style={styles.continueButton} 
+                  activeOpacity={0.8}
+                  onPress={() => router.replace('/(tabs)/Home')}
+                >
                   <Text style={styles.continueButtonText}>Continue</Text>
                 </TouchableOpacity>
               </View>
@@ -51,7 +62,7 @@ const SetFingerPrint = () => {
           </View>
         </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

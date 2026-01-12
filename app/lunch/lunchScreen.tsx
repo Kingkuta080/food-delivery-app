@@ -1,9 +1,11 @@
 import { Image } from 'expo-image'
+import { useRouter } from 'expo-router'
 import React, { useEffect, useRef } from 'react'
 import { Animated, StyleSheet, View } from 'react-native'
 import { colors } from '../utils/colors'
 
 const LunchScreen = () => {
+  const router = useRouter()
   const bounceValue = useRef(new Animated.Value(0)).current
 
   useEffect(() => {
@@ -22,7 +24,14 @@ const LunchScreen = () => {
         }),
       ])
     ).start()
-  }, [bounceValue])
+
+    // Navigate to option screen after 3 seconds
+    const timer = setTimeout(() => {
+      router.replace('/lunch/optionScreen')
+    }, 3000)
+
+    return () => clearTimeout(timer)
+  }, [bounceValue, router])
 
   return (
     <View style={styles.container}>

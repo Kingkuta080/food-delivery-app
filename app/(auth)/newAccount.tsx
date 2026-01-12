@@ -1,9 +1,12 @@
 import { Ionicons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors } from '../utils/colors'
 
 const NewAccount = () => {
+  const router = useRouter()
   const [fullName, setFullName] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
@@ -12,11 +15,15 @@ const NewAccount = () => {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       {/* Yellow Header Section */}
       <View style={styles.headerSection}>
         {/* Back Button */}
-        <TouchableOpacity style={styles.backButton} activeOpacity={0.7}>
+        <TouchableOpacity 
+          style={styles.backButton} 
+          activeOpacity={0.7}
+          onPress={() => router.back()}
+        >
           <Ionicons name="arrow-back" size={22} color={colors.orangeBase} />
         </TouchableOpacity>
 
@@ -122,7 +129,11 @@ const NewAccount = () => {
               </View>
 
               {/* Sign Up Button */}
-              <TouchableOpacity style={styles.signUpButton} activeOpacity={0.8}>
+              <TouchableOpacity 
+                style={styles.signUpButton} 
+                activeOpacity={0.8}
+                onPress={() => router.push('/(auth)/setPassword')}
+              >
                 <Text style={styles.signUpButtonText}>Sign Up</Text>
               </TouchableOpacity>
 
@@ -153,7 +164,7 @@ const NewAccount = () => {
           </View>
         </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

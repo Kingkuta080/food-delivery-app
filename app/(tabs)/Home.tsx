@@ -1,13 +1,16 @@
 import { Ionicons } from '@expo/vector-icons'
 import { Image } from 'expo-image'
+import { useRouter } from 'expo-router'
 import React from 'react'
 import { Dimensions, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors } from '../utils/colors'
 import { styles } from './HomeStyles'
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window')
 
 const Home = () => {
+  const router = useRouter()
   const categories = [
     { name: 'Snacks', image: require('../../assets/images/snack.svg') },
     { name: 'Meal', image: require('../../assets/images/meal.svg') },
@@ -30,7 +33,7 @@ const Home = () => {
   ]
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       {/* Yellow Header Section */}
       <View style={styles.headerSection}>
         {/* Search Bar and Action Icons */}
@@ -97,7 +100,10 @@ const Home = () => {
           <View style={styles.section}>
             <View style={styles.sectionHeader}>
               <Text style={styles.sectionTitle}>Best Seller</Text>
-              <TouchableOpacity activeOpacity={0.7}>
+              <TouchableOpacity 
+                activeOpacity={0.7}
+                onPress={() => router.push('/(tabs)/Menu')}
+              >
                 <Text style={styles.viewAllText}>View All &gt;</Text>
               </TouchableOpacity>
             </View>
@@ -173,7 +179,7 @@ const Home = () => {
           </View>
         </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

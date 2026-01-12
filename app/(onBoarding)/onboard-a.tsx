@@ -1,11 +1,15 @@
 import { Image } from 'expo-image'
+import { useRouter } from 'expo-router'
 import React from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors } from '../utils/colors'
 
 const OnboardA = () => {
+  const router = useRouter()
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       {/* Background Image */}
       <Image 
         source={require('../../assets/images/onboarding-a.svg')}
@@ -14,7 +18,11 @@ const OnboardA = () => {
       />
       
       {/* Skip Button */}
-      <TouchableOpacity style={styles.skipButton} activeOpacity={0.7}>
+      <TouchableOpacity 
+        style={styles.skipButton} 
+        activeOpacity={0.7}
+        onPress={() => router.push('/(auth)/login')}
+      >
         <Text style={styles.skipText}>Skip &gt;</Text>
       </TouchableOpacity>
 
@@ -53,13 +61,17 @@ const OnboardA = () => {
             </View>
 
             {/* Next Button */}
-            <TouchableOpacity style={styles.nextButton} activeOpacity={0.8}>
+            <TouchableOpacity 
+              style={styles.nextButton} 
+              activeOpacity={0.8}
+              onPress={() => router.push('/(onBoarding)/onboard-b')}
+            >
               <Text style={styles.nextButtonText}>Next</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

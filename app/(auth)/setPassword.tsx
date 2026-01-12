@@ -1,16 +1,19 @@
 import { Ionicons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors } from '../utils/colors'
 
 const SetPassword = () => {
+  const router = useRouter()
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       {/* Yellow Header Section */}
       <View style={styles.headerSection}>
         {/* Back Button */}
@@ -88,14 +91,18 @@ const SetPassword = () => {
               </View>
 
               {/* Create New Password Button */}
-              <TouchableOpacity style={styles.createPasswordButton} activeOpacity={0.8}>
+              <TouchableOpacity 
+                style={styles.createPasswordButton} 
+                activeOpacity={0.8}
+                onPress={() => router.push('/(auth)/setFingerPrint')}
+              >
                 <Text style={styles.createPasswordButtonText}>Create New Password</Text>
               </TouchableOpacity>
             </View>
           </View>
         </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

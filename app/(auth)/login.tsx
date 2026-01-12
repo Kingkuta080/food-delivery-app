@@ -1,19 +1,26 @@
 import { Ionicons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors } from '../utils/colors'
 
 const Login = () => {
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       {/* Yellow Header Section (25%) */}
       <View style={styles.headerSection}>
         {/* Back Button */}
-        <TouchableOpacity style={styles.backButton} activeOpacity={0.7}>
+        <TouchableOpacity 
+          style={styles.backButton} 
+          activeOpacity={0.7}
+          onPress={() => router.back()}
+        >
           <Ionicons name="arrow-back" size={22} color={colors.orangeBase} />
         </TouchableOpacity>
 
@@ -84,7 +91,11 @@ const Login = () => {
               </TouchableOpacity>
 
               {/* Log In Button */}
-              <TouchableOpacity style={styles.loginButton} activeOpacity={0.8}>
+              <TouchableOpacity 
+                style={styles.loginButton} 
+                activeOpacity={0.8}
+                onPress={() => router.replace('/(tabs)/Home')}
+              >
                 <Text style={styles.loginButtonText}>LOG IN</Text>
               </TouchableOpacity>
 
@@ -107,7 +118,10 @@ const Login = () => {
               {/* Sign Up Link */}
               <View style={styles.signUpContainer}>
                 <Text style={styles.signUpText}>Don&apos;t have an account? </Text>
-                <TouchableOpacity activeOpacity={0.7}>
+                <TouchableOpacity 
+                  activeOpacity={0.7}
+                  onPress={() => router.push('/(auth)/newAccount')}
+                >
                   <Text style={styles.signUpLink}>Sign Up</Text>
                 </TouchableOpacity>
               </View>
@@ -115,8 +129,7 @@ const Login = () => {
           </View>
         </ScrollView>
       </View>
-
-    </View>
+    </SafeAreaView>
   )
 }
 
