@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import { Tabs } from 'expo-router'
 import React from 'react'
-import { Platform, StyleSheet } from 'react-native'
+import { Platform, StyleSheet, View } from 'react-native'
 import { colors } from '../utils/colors'
 
 export default function TabLayout() {
@@ -15,11 +15,11 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: colors.orangeBase,
           borderTopWidth: 0,
-          height: Platform.OS === 'ios' ? 60 : 60,
-          paddingBottom: Platform.OS === 'ios' ? 8 : 6,
-          paddingTop: 8,
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
+          height: Platform.OS === 'ios' ? 70 : 70,
+          paddingBottom: Platform.OS === 'ios' ? 10 : 8,
+          paddingTop: 10,
+          borderTopLeftRadius: 25,
+          borderTopRightRadius: 25,
           elevation: 0,
           shadowOpacity: 0,
           position: 'absolute',
@@ -35,40 +35,50 @@ export default function TabLayout() {
       <Tabs.Screen
         name="Home"
         options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="home-outline" size={24} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <View style={focused ? { backgroundColor: 'rgba(255, 255, 255, 0.2)', width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' } : {}}>
+              <Ionicons name={focused ? "home" : "home-outline"} size={24} color={color} />
+            </View>
           ),
         }}
       />
       <Tabs.Screen
         name="Menu"
         options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="restaurant-outline" size={24} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <View style={focused ? { backgroundColor: 'rgba(255, 255, 255, 0.2)', width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' } : {}}>
+              <Ionicons name={focused ? "restaurant" : "restaurant-outline"} size={24} color={color} />
+            </View>
           ),
         }}
       />
       <Tabs.Screen
         name="Favorites"
         options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="heart-outline" size={24} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <View style={focused ? { backgroundColor: 'rgba(255, 255, 255, 0.2)', width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' } : {}}>
+              <Ionicons name={focused ? "heart" : "heart-outline"} size={24} color={color} />
+            </View>
           ),
         }}
       />
       <Tabs.Screen
         name="Orders"
         options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="clipboard-outline" size={24} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <View style={focused ? { backgroundColor: 'rgba(255, 255, 255, 0.2)', width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' } : {}}>
+              <Ionicons name={focused ? "clipboard" : "clipboard-outline"} size={24} color={color} />
+            </View>
           ),
         }}
       />
       <Tabs.Screen
         name="Support"
         options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="headset-outline" size={24} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <View style={focused ? { backgroundColor: 'rgba(255, 255, 255, 0.2)', width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' } : {}}>
+              <Ionicons name={focused ? "headset" : "headset-outline"} size={24} color={color} />
+            </View>
           ),
         }}
       />
