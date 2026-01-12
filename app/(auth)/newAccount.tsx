@@ -3,14 +3,17 @@ import React, { useState } from 'react'
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { colors } from '../utils/colors'
 
-const Login = () => {
-  const [email, setEmail] = useState('')
+const NewAccount = () => {
+  const [fullName, setFullName] = useState('')
   const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [mobileNumber, setMobileNumber] = useState('')
+  const [dateOfBirth, setDateOfBirth] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
   return (
     <View style={styles.container}>
-      {/* Yellow Header Section (25%) */}
+      {/* Yellow Header Section */}
       <View style={styles.headerSection}>
         {/* Back Button */}
         <TouchableOpacity style={styles.backButton} activeOpacity={0.7}>
@@ -18,10 +21,10 @@ const Login = () => {
         </TouchableOpacity>
 
         {/* Title */}
-        <Text style={styles.headerTitle}>LOG IN</Text>
+        <Text style={styles.headerTitle}>New Account</Text>
       </View>
 
-      {/* White Card Content (65%) */}
+      {/* White Card Content */}
       <View style={styles.cardSection}>
         <ScrollView 
           style={styles.scrollView}
@@ -29,27 +32,18 @@ const Login = () => {
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.cardContent}>
-            {/* Welcome Section */}
-            <View style={styles.welcomeSection}>
-              <Text style={styles.welcomeTitle}>Welcome</Text>
-              <Text style={styles.welcomeDescription}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </Text>
-            </View>
-
             {/* Form */}
             <View style={styles.form}>
-              {/* Email or Mobile Number Input */}
+              {/* Full Name Input */}
               <View style={styles.inputContainer}>
-                <Text style={styles.label}>Email or Mobile Number</Text>
+                <Text style={styles.label}>Full name</Text>
                 <TextInput
                   style={styles.input}
-                  placeholder="example@example.com"
+                  placeholder="Enter your full name"
                   placeholderTextColor={colors.font}
-                  value={email}
-                  onChangeText={setEmail}
-                  keyboardType="email-address"
-                  autoCapitalize="none"
+                  value={fullName}
+                  onChangeText={setFullName}
+                  autoCapitalize="words"
                 />
               </View>
 
@@ -78,14 +72,58 @@ const Login = () => {
                 </View>
               </View>
 
-              {/* Forget Password */}
-              <TouchableOpacity style={styles.forgotPassword} activeOpacity={0.7}>
-                <Text style={styles.forgotPasswordText}>Forget Password</Text>
-              </TouchableOpacity>
+              {/* Email Input */}
+              <View style={styles.inputContainer}>
+                <Text style={styles.label}>Email</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="example@example.com"
+                  placeholderTextColor={colors.font}
+                  value={email}
+                  onChangeText={setEmail}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                />
+              </View>
 
-              {/* Log In Button */}
-              <TouchableOpacity style={styles.loginButton} activeOpacity={0.8}>
-                <Text style={styles.loginButtonText}>LOG IN</Text>
+              {/* Mobile Number Input */}
+              <View style={styles.inputContainer}>
+                <Text style={styles.label}>Mobile Number</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="+ 123 456 789"
+                  placeholderTextColor={colors.font}
+                  value={mobileNumber}
+                  onChangeText={setMobileNumber}
+                  keyboardType="phone-pad"
+                />
+              </View>
+
+              {/* Date of Birth Input */}
+              <View style={styles.inputContainer}>
+                <Text style={styles.label}>Date of birth</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="DD / MM / YYYY"
+                  placeholderTextColor={colors.font}
+                  value={dateOfBirth}
+                  onChangeText={setDateOfBirth}
+                />
+              </View>
+
+              {/* Terms Text */}
+              <View style={styles.termsContainer}>
+                <Text style={styles.termsText}>
+                  By continuing, you agree to{' '}
+                  <Text style={styles.termsLink}>Terms of Use</Text>
+                  {' '}and{' '}
+                  <Text style={styles.termsLink}>Privacy Policy</Text>
+                </Text>
+              </View>
+
+              {/* Sign Up Button */}
+              <TouchableOpacity style={styles.signUpButton} activeOpacity={0.8}>
+                <Text style={styles.signUpButtonText}>Sign Up</Text>
               </TouchableOpacity>
 
               {/* Social Sign Up */}
@@ -99,28 +137,27 @@ const Login = () => {
                     <Text style={styles.socialIconText}>f</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.socialIcon} activeOpacity={0.7}>
-                    <Ionicons name="finger-print-outline" size={20} color={colors.orangeBase} />
+                    <Ionicons name="finger-print-outline" size={24} color={colors.orangeBase} />
                   </TouchableOpacity>
                 </View>
               </View>
 
-              {/* Sign Up Link */}
-              <View style={styles.signUpContainer}>
-                <Text style={styles.signUpText}>Don&apos;t have an account? </Text>
+              {/* Login Link */}
+              <View style={styles.loginContainer}>
+                <Text style={styles.loginText}>Already have an account? </Text>
                 <TouchableOpacity activeOpacity={0.7}>
-                  <Text style={styles.signUpLink}>Sign Up</Text>
+                  <Text style={styles.loginLink}>Log in</Text>
                 </TouchableOpacity>
               </View>
             </View>
           </View>
         </ScrollView>
       </View>
-
     </View>
   )
 }
 
-export default Login
+export default NewAccount
 
 const styles = StyleSheet.create({
   container: {
@@ -171,21 +208,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '100%',
   },
-  welcomeSection: {
-    marginBottom: 24,
-  },
-  welcomeTitle: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: colors.font,
-    marginBottom: 8,
-  },
-  welcomeDescription: {
-    fontSize: 13,
-    lineHeight: 18,
-    color: colors.font,
-    opacity: 0.8,
-  },
   form: {
     flex: 1,
   },
@@ -224,16 +246,23 @@ const styles = StyleSheet.create({
   eyeIcon: {
     padding: 6,
   },
-  forgotPassword: {
-    alignSelf: 'flex-end',
+  termsContainer: {
+    marginTop: 8,
     marginBottom: 20,
+    paddingHorizontal: 4,
   },
-  forgotPasswordText: {
-    fontSize: 13,
+  termsText: {
+    fontSize: 12,
+    lineHeight: 18,
+    color: colors.font,
+    textAlign: 'center',
+    opacity: 0.8,
+  },
+  termsLink: {
     color: colors.orangeBase,
     fontWeight: '600',
   },
-  loginButton: {
+  signUpButton: {
     width: '100%',
     backgroundColor: colors.orangeBase,
     paddingVertical: 14,
@@ -242,7 +271,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 20,
   },
-  loginButtonText: {
+  signUpButtonText: {
     fontSize: 16,
     fontWeight: '700',
     color: colors.font2,
@@ -279,19 +308,19 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: colors.orangeBase,
   },
-  signUpContainer: {
+  loginContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 'auto',
     paddingBottom: 16,
   },
-  signUpText: {
+  loginText: {
     fontSize: 13,
     color: colors.font,
     opacity: 0.7,
   },
-  signUpLink: {
+  loginLink: {
     fontSize: 13,
     color: colors.orangeBase,
     fontWeight: '600',

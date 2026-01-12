@@ -1,6 +1,6 @@
 import { Image } from 'expo-image'
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors } from '../utils/colors'
 
 const OnboardC = () => {
@@ -20,38 +20,44 @@ const OnboardC = () => {
 
       {/* White Card Overlay */}
       <View style={styles.cardSection}>
-        <View style={styles.cardContent}>
-          {/* Icon */}
-          <View style={styles.iconContainer}>
-            <View style={styles.icon}>
-              <Image 
-                source={require('../../assets/images/delivery.svg')} 
-                style={styles.iconImage}
-                contentFit="contain"
-              />
+        <ScrollView 
+          style={styles.scrollView}
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.cardContent}>
+            {/* Icon */}
+            <View style={styles.iconContainer}>
+              <View style={styles.icon}>
+                <Image 
+                  source={require('../../assets/images/delivery.svg')} 
+                  style={styles.iconImage}
+                  contentFit="contain"
+                />
+              </View>
             </View>
+
+            {/* Title */}
+            <Text style={styles.title}>Order For Food</Text>
+
+            {/* Description */}
+            <Text style={styles.description}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+            </Text>
+
+            {/* Pagination Dots */}
+            <View style={styles.paginationContainer}>
+              <View style={[styles.paginationDot, styles.paginationDotInactive]} />
+              <View style={[styles.paginationDot, styles.paginationDotInactive]} />
+              <View style={[styles.paginationDot, styles.paginationDotActive]} />
+            </View>
+
+            {/* Next Button */}
+            <TouchableOpacity style={styles.nextButton} activeOpacity={0.8}>
+              <Text style={styles.nextButtonText}>Next</Text>
+            </TouchableOpacity>
           </View>
-
-          {/* Title */}
-          <Text style={styles.title}>Order For Food</Text>
-
-          {/* Description */}
-          <Text style={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
-          </Text>
-
-          {/* Pagination Dots */}
-          <View style={styles.paginationContainer}>
-            <View style={[styles.paginationDot, styles.paginationDotInactive]} />
-            <View style={[styles.paginationDot, styles.paginationDotInactive]} />
-            <View style={[styles.paginationDot, styles.paginationDotActive]} />
-          </View>
-
-          {/* Next Button */}
-          <TouchableOpacity style={styles.nextButton} activeOpacity={0.8}>
-            <Text style={styles.nextButtonText}>Next</Text>
-          </TouchableOpacity>
-        </View>
+        </ScrollView>
       </View>
     </View>
   )
@@ -97,9 +103,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 28,
     paddingBottom: 24,
+    maxHeight: '45%',
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    maxHeight: '45%',
   },
   cardContent: {
     width: '100%',

@@ -1,5 +1,5 @@
-import Login from "./(auth)/login";
-  
+import Home from "./(tabs)/Home";
+
 export default function Index() {
-  return <Login />
+  return <Home />;
 }

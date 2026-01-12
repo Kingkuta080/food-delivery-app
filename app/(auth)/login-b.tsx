@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { colors } from '../utils/colors'
 
-const Login = () => {
+const LoginB = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -18,7 +18,7 @@ const Login = () => {
         </TouchableOpacity>
 
         {/* Title */}
-        <Text style={styles.headerTitle}>LOG IN</Text>
+        <Text style={styles.headerTitle}>Hello!</Text>
       </View>
 
       {/* White Card Content (65%) */}
@@ -32,9 +32,9 @@ const Login = () => {
             {/* Welcome Section */}
             <View style={styles.welcomeSection}>
               <Text style={styles.welcomeTitle}>Welcome</Text>
-              <Text style={styles.welcomeDescription}>
+              {/* <Text style={styles.welcomeDescription}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </Text>
+              </Text> */}
             </View>
 
             {/* Form */}
@@ -90,16 +90,10 @@ const Login = () => {
 
               {/* Social Sign Up */}
               <View style={styles.socialSection}>
-                <Text style={styles.socialText}>or sign up with</Text>
+                <Text style={styles.socialText}>or</Text>
                 <View style={styles.socialIcons}>
                   <TouchableOpacity style={styles.socialIcon} activeOpacity={0.7}>
-                    <Text style={styles.socialIconText}>G</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.socialIcon} activeOpacity={0.7}>
-                    <Text style={styles.socialIconText}>f</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.socialIcon} activeOpacity={0.7}>
-                    <Ionicons name="finger-print-outline" size={20} color={colors.orangeBase} />
+                    <Ionicons name="finger-print-outline" size={24} color={colors.orangeBase} />
                   </TouchableOpacity>
                 </View>
               </View>
@@ -120,7 +114,7 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginB
 
 const styles = StyleSheet.create({
   container: {
