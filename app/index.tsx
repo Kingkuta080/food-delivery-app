@@ -1,5 +1,5 @@
-import OnboardA from "./(onBoarding)/onboard-a";
-
+import Login from "./(auth)/login";
+  
 export default function Index() {
-  return <OnboardA />
+  return <Login />
 }

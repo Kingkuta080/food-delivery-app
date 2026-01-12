@@ -8,7 +8,7 @@ const OnboardA = () => {
     <View style={styles.container}>
       {/* Background Image */}
       <Image 
-        source={require('../../assets/images/onboarding-a.svg')}
+        source={require('../../assets/images/onboarding-b.svg')}
         style={styles.backgroundImage}
         contentFit="cover"
       />
@@ -25,7 +25,7 @@ const OnboardA = () => {
           <View style={styles.iconContainer}>
             <View style={styles.icon}>
               <Image 
-                source={require('../../assets/images/file.svg')} 
+                source={require('../../assets/images/card.svg')} 
                 style={styles.iconImage}
                 contentFit="contain"
               />
@@ -42,8 +42,8 @@ const OnboardA = () => {
 
           {/* Pagination Dots */}
           <View style={styles.paginationContainer}>
-            <View style={[styles.paginationDot, styles.paginationDotActive]} />
             <View style={[styles.paginationDot, styles.paginationDotInactive]} />
+            <View style={[styles.paginationDot, styles.paginationDotActive]} />
             <View style={[styles.paginationDot, styles.paginationDotInactive]} />
           </View>
 

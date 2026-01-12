@@ -3,12 +3,12 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors } from '../utils/colors'
 
-const OnboardA = () => {
+const OnboardC = () => {
   return (
     <View style={styles.container}>
       {/* Background Image */}
       <Image 
-        source={require('../../assets/images/onboarding-a.svg')}
+        source={require('../../assets/images/onboarding-c.svg')}
         style={styles.backgroundImage}
         contentFit="cover"
       />
@@ -25,7 +25,7 @@ const OnboardA = () => {
           <View style={styles.iconContainer}>
             <View style={styles.icon}>
               <Image 
-                source={require('../../assets/images/file.svg')} 
+                source={require('../../assets/images/delivery.svg')} 
                 style={styles.iconImage}
                 contentFit="contain"
               />
@@ -42,9 +42,9 @@ const OnboardA = () => {
 
           {/* Pagination Dots */}
           <View style={styles.paginationContainer}>
+            <View style={[styles.paginationDot, styles.paginationDotInactive]} />
+            <View style={[styles.paginationDot, styles.paginationDotInactive]} />
             <View style={[styles.paginationDot, styles.paginationDotActive]} />
-            <View style={[styles.paginationDot, styles.paginationDotInactive]} />
-            <View style={[styles.paginationDot, styles.paginationDotInactive]} />
           </View>
 
           {/* Next Button */}
@@ -57,7 +57,7 @@ const OnboardA = () => {
   )
 }
 
-export default OnboardA
+export default OnboardC
 
 const styles = StyleSheet.create({
   container: {
