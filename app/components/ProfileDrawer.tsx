@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import React, { useEffect } from 'react'
 import {
   Animated,
@@ -29,6 +30,8 @@ interface MenuItem {
 }
 
 const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ visible, onClose }) => {
+  const router = useRouter()
+  const [showLogoutModal, setShowLogoutModal] = React.useState(false)
   const slideAnim = React.useRef(new Animated.Value(DRAWER_WIDTH)).current
   const overlayOpacity = React.useRef(new Animated.Value(0)).current
 
@@ -71,7 +74,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ visible, onClose }) => {
       icon: 'bag-outline',
       onPress: () => {
         onClose()
-        // Navigate to orders - you can add navigation here
+        router.push('/(tabs)/Orders')
       },
     },
     {
@@ -80,7 +83,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ visible, onClose }) => {
       icon: 'person-outline',
       onPress: () => {
         onClose()
-        // Navigate to profile - you can add navigation here
+        router.push('/(screens)/MyProfile')
       },
     },
     {
@@ -89,7 +92,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ visible, onClose }) => {
       icon: 'location-outline',
       onPress: () => {
         onClose()
-        // Navigate to address - you can add navigation here
+        router.push('/(screens)/Delivery')
       },
     },
     {
@@ -98,7 +101,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ visible, onClose }) => {
       icon: 'card-outline',
       onPress: () => {
         onClose()
-        // Navigate to payment - you can add navigation here
+        router.push('/(screens)/PaymentMethods')
       },
     },
     {
@@ -107,7 +110,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ visible, onClose }) => {
       icon: 'call-outline',
       onPress: () => {
         onClose()
-        // Navigate to contact - you can add navigation here
+        router.push('/(screens)/ContactUs')
       },
     },
     {
@@ -116,7 +119,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ visible, onClose }) => {
       icon: 'chatbubble-outline',
       onPress: () => {
         onClose()
-        // Navigate to help - you can add navigation here
+        router.push('/(screens)/Help')
       },
     },
     {
@@ -125,7 +128,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ visible, onClose }) => {
       icon: 'settings-outline',
       onPress: () => {
         onClose()
-        // Navigate to settings - you can add navigation here
+        router.push('/(screens)/Settings')
       },
     },
     {
@@ -133,8 +136,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ visible, onClose }) => {
       label: 'Log Out',
       icon: 'log-out-outline',
       onPress: () => {
-        onClose()
-        // Handle logout - you can add logout logic here
+        setShowLogoutModal(true)
       },
     },
   ]
@@ -215,6 +217,42 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ visible, onClose }) => {
           </SafeAreaView>
         </Animated.View>
       </View>
+
+      {/* Logout Confirmation Modal */}
+      <Modal
+        visible={showLogoutModal}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setShowLogoutModal(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.logoutModal}>
+            <Text style={styles.logoutModalText}>
+              Are you sure you want to log out?
+            </Text>
+            <View style={styles.logoutModalButtons}>
+              <TouchableOpacity
+                style={styles.cancelLogoutButton}
+                activeOpacity={0.7}
+                onPress={() => setShowLogoutModal(false)}
+              >
+                <Text style={styles.cancelLogoutButtonText}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.confirmLogoutButton}
+                activeOpacity={0.7}
+                onPress={() => {
+                  setShowLogoutModal(false)
+                  onClose()
+                  router.replace('/(auth)/login')
+                }}
+              >
+                <Text style={styles.confirmLogoutButtonText}>Yes, logout</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </Modal>
   )
 }
@@ -314,5 +352,57 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     marginLeft: 24,
     marginRight: 24,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  logoutModal: {
+    width: '90%',
+    backgroundColor: colors.background,
+    borderRadius: 20,
+    padding: 24,
+    marginBottom: 100,
+    alignItems: 'center',
+  },
+  logoutModalText: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: colors.font,
+    textAlign: 'center',
+    marginBottom: 24,
+  },
+  logoutModalButtons: {
+    flexDirection: 'row',
+    gap: 12,
+    width: '100%',
+  },
+  cancelLogoutButton: {
+    flex: 1,
+    backgroundColor: colors.orange2,
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cancelLogoutButtonText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: colors.orangeBase,
+  },
+  confirmLogoutButton: {
+    flex: 1,
+    backgroundColor: colors.orangeBase,
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  confirmLogoutButtonText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: colors.font2,
   },
 })
