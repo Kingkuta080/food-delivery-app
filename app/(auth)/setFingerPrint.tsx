@@ -50,13 +50,13 @@ const SetFingerPrint = () => {
                 >
                   <Text style={styles.skipButtonText}>Skip</Text>
                 </TouchableOpacity>
-                <TouchableOpacity 
+                  <TouchableOpacity
                   style={styles.continueButton} 
                   activeOpacity={0.8}
                   onPress={() => router.replace('/(tabs)/Home')}
                 >
                   <Text style={styles.continueButtonText}>Continue</Text>
-                </TouchableOpacity>
+                  </TouchableOpacity>
               </View>
             </View>
           </View>

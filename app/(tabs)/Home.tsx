@@ -1,9 +1,10 @@
 import { Ionicons } from '@expo/vector-icons'
 import { Image } from 'expo-image'
 import { useRouter } from 'expo-router'
-import React from 'react'
+import React, { useState } from 'react'
 import { Dimensions, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import ProfileDrawer from '../components/ProfileDrawer'
 import { colors } from '../utils/colors'
 import { styles } from './HomeStyles'
 
@@ -11,6 +12,7 @@ const { width: SCREEN_WIDTH } = Dimensions.get('window')
 
 const Home = () => {
   const router = useRouter()
+  const [drawerVisible, setDrawerVisible] = useState(false)
   const categories = [
     { name: 'Snacks', image: require('../../assets/images/snack.svg') },
     { name: 'Meal', image: require('../../assets/images/meal.svg') },
@@ -55,7 +57,11 @@ const Home = () => {
             <TouchableOpacity style={styles.actionIcon} activeOpacity={0.7}>
               <Ionicons name="notifications-outline" size={Math.max(18, SCREEN_WIDTH * 0.055)} color={colors.orangeBase} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.actionIcon} activeOpacity={0.7}>
+            <TouchableOpacity
+              style={styles.actionIcon}
+              activeOpacity={0.7}
+              onPress={() => setDrawerVisible(true)}
+            >
               <Ionicons name="person-outline" size={Math.max(18, SCREEN_WIDTH * 0.055)} color={colors.orangeBase} />
             </TouchableOpacity>
           </View>
@@ -179,6 +185,12 @@ const Home = () => {
           </View>
         </ScrollView>
       </View>
+
+      {/* Profile Drawer */}
+      <ProfileDrawer
+        visible={drawerVisible}
+        onClose={() => setDrawerVisible(false)}
+      />
     </SafeAreaView>
   )
 }

@@ -70,7 +70,7 @@ const OnboardA = () => {
             </TouchableOpacity>
           </View>
         </ScrollView>
-      </View>
+    </View>
     </SafeAreaView>
   )
 }

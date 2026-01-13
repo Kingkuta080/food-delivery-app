@@ -35,92 +35,92 @@ const LoginB = () => {
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.cardContent}>
-            {/* Welcome Section */}
-            <View style={styles.welcomeSection}>
-              <Text style={styles.welcomeTitle}>Welcome</Text>
-              {/* <Text style={styles.welcomeDescription}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </Text> */}
+        <View style={styles.cardContent}>
+          {/* Welcome Section */}
+          <View style={styles.welcomeSection}>
+            <Text style={styles.welcomeTitle}>Welcome</Text>
+            {/* <Text style={styles.welcomeDescription}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </Text> */}
+          </View>
+
+          {/* Form */}
+          <View style={styles.form}>
+            {/* Email or Mobile Number Input */}
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>Email or Mobile Number</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="example@example.com"
+                placeholderTextColor={colors.font}
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
             </View>
 
-            {/* Form */}
-            <View style={styles.form}>
-              {/* Email or Mobile Number Input */}
-              <View style={styles.inputContainer}>
-                <Text style={styles.label}>Email or Mobile Number</Text>
+            {/* Password Input */}
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>Password</Text>
+              <View style={styles.passwordInputWrapper}>
                 <TextInput
-                  style={styles.input}
-                  placeholder="example@example.com"
+                  style={styles.passwordInput}
+                  placeholder={password ? '' : 'Enter your password'}
                   placeholderTextColor={colors.font}
-                  value={email}
-                  onChangeText={setEmail}
-                  keyboardType="email-address"
-                  autoCapitalize="none"
+                  value={password}
+                  onChangeText={setPassword}
+                  secureTextEntry={!showPassword}
                 />
-              </View>
-
-              {/* Password Input */}
-              <View style={styles.inputContainer}>
-                <Text style={styles.label}>Password</Text>
-                <View style={styles.passwordInputWrapper}>
-                  <TextInput
-                    style={styles.passwordInput}
-                    placeholder={password ? '' : 'Enter your password'}
-                    placeholderTextColor={colors.font}
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry={!showPassword}
+                <TouchableOpacity
+                  onPress={() => setShowPassword(!showPassword)}
+                  style={styles.eyeIcon}
+                >
+                  <Ionicons
+                    name={showPassword ? 'eye-off-outline' : 'eye-outline'}
+                    size={20}
+                    color={colors.orangeBase}
                   />
-                  <TouchableOpacity
-                    onPress={() => setShowPassword(!showPassword)}
-                    style={styles.eyeIcon}
-                  >
-                    <Ionicons
-                      name={showPassword ? 'eye-off-outline' : 'eye-outline'}
-                      size={20}
-                      color={colors.orangeBase}
-                    />
-                  </TouchableOpacity>
-                </View>
+                </TouchableOpacity>
               </View>
+            </View>
 
-              {/* Forget Password */}
-              <TouchableOpacity style={styles.forgotPassword} activeOpacity={0.7}>
-                <Text style={styles.forgotPasswordText}>Forget Password</Text>
-              </TouchableOpacity>
+            {/* Forget Password */}
+            <TouchableOpacity style={styles.forgotPassword} activeOpacity={0.7}>
+              <Text style={styles.forgotPasswordText}>Forget Password</Text>
+            </TouchableOpacity>
 
-              {/* Log In Button */}
+            {/* Log In Button */}
               <TouchableOpacity 
                 style={styles.loginButton} 
                 activeOpacity={0.8}
                 onPress={() => router.replace('/(tabs)/Home')}
               >
-                <Text style={styles.loginButtonText}>LOG IN</Text>
-              </TouchableOpacity>
+              <Text style={styles.loginButtonText}>LOG IN</Text>
+            </TouchableOpacity>
 
-              {/* Social Sign Up */}
-              <View style={styles.socialSection}>
+            {/* Social Sign Up */}
+            <View style={styles.socialSection}>
                 <Text style={styles.socialText}>or</Text>
-                <View style={styles.socialIcons}>
-                  <TouchableOpacity style={styles.socialIcon} activeOpacity={0.7}>
+              <View style={styles.socialIcons}>
+                <TouchableOpacity style={styles.socialIcon} activeOpacity={0.7}>
                     <Ionicons name="finger-print-outline" size={24} color={colors.orangeBase} />
-                  </TouchableOpacity>
-                </View>
+                </TouchableOpacity>
               </View>
+            </View>
 
-              {/* Sign Up Link */}
-              <View style={styles.signUpContainer}>
-                <Text style={styles.signUpText}>Don&apos;t have an account? </Text>
+            {/* Sign Up Link */}
+            <View style={styles.signUpContainer}>
+              <Text style={styles.signUpText}>Don&apos;t have an account? </Text>
                 <TouchableOpacity 
                   activeOpacity={0.7}
                   onPress={() => router.push('/(auth)/newAccount')}
                 >
-                  <Text style={styles.signUpLink}>Sign Up</Text>
-                </TouchableOpacity>
-              </View>
+                <Text style={styles.signUpLink}>Sign Up</Text>
+              </TouchableOpacity>
             </View>
           </View>
+        </View>
         </ScrollView>
       </View>
 

@@ -69,10 +69,10 @@ const SetPassword = () => {
               <View style={styles.inputContainer}>
                 <Text style={styles.label}>Confirm Password</Text>
                 <View style={styles.passwordInputWrapper}>
-                  <TextInput
+                <TextInput
                     style={styles.passwordInput}
                     placeholder={confirmPassword ? '' : 'Confirm your password'}
-                    placeholderTextColor={colors.font}
+                  placeholderTextColor={colors.font}
                     value={confirmPassword}
                     onChangeText={setConfirmPassword}
                     secureTextEntry={!showConfirmPassword}
@@ -97,7 +97,7 @@ const SetPassword = () => {
                 onPress={() => router.push('/(auth)/setFingerPrint')}
               >
                 <Text style={styles.createPasswordButtonText}>Create New Password</Text>
-              </TouchableOpacity>
+                </TouchableOpacity>
             </View>
           </View>
         </ScrollView>

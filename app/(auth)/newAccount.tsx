@@ -38,46 +38,46 @@ const NewAccount = () => {
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.cardContent}>
-            {/* Form */}
-            <View style={styles.form}>
+        <View style={styles.cardContent}>
+          {/* Form */}
+          <View style={styles.form}>
               {/* Full Name Input */}
-              <View style={styles.inputContainer}>
+            <View style={styles.inputContainer}>
                 <Text style={styles.label}>Full name</Text>
-                <TextInput
-                  style={styles.input}
+              <TextInput
+                style={styles.input}
                   placeholder="Enter your full name"
-                  placeholderTextColor={colors.font}
+                placeholderTextColor={colors.font}
                   value={fullName}
                   onChangeText={setFullName}
                   autoCapitalize="words"
-                />
-              </View>
+              />
+            </View>
 
-              {/* Password Input */}
-              <View style={styles.inputContainer}>
-                <Text style={styles.label}>Password</Text>
-                <View style={styles.passwordInputWrapper}>
-                  <TextInput
-                    style={styles.passwordInput}
-                    placeholder={password ? '' : 'Enter your password'}
-                    placeholderTextColor={colors.font}
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry={!showPassword}
+            {/* Password Input */}
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>Password</Text>
+              <View style={styles.passwordInputWrapper}>
+                <TextInput
+                  style={styles.passwordInput}
+                  placeholder={password ? '' : 'Enter your password'}
+                  placeholderTextColor={colors.font}
+                  value={password}
+                  onChangeText={setPassword}
+                  secureTextEntry={!showPassword}
+                />
+                <TouchableOpacity
+                  onPress={() => setShowPassword(!showPassword)}
+                  style={styles.eyeIcon}
+                >
+                  <Ionicons
+                    name={showPassword ? 'eye-off-outline' : 'eye-outline'}
+                    size={20}
+                    color={colors.orangeBase}
                   />
-                  <TouchableOpacity
-                    onPress={() => setShowPassword(!showPassword)}
-                    style={styles.eyeIcon}
-                  >
-                    <Ionicons
-                      name={showPassword ? 'eye-off-outline' : 'eye-outline'}
-                      size={20}
-                      color={colors.orangeBase}
-                    />
-                  </TouchableOpacity>
-                </View>
+                </TouchableOpacity>
               </View>
+            </View>
 
               {/* Email Input */}
               <View style={styles.inputContainer}>
@@ -135,33 +135,33 @@ const NewAccount = () => {
                 onPress={() => router.push('/(auth)/setPassword')}
               >
                 <Text style={styles.signUpButtonText}>Sign Up</Text>
-              </TouchableOpacity>
+            </TouchableOpacity>
 
-              {/* Social Sign Up */}
-              <View style={styles.socialSection}>
+            {/* Social Sign Up */}
+            <View style={styles.socialSection}>
                 <Text style={styles.socialText}>or sign up with</Text>
-                <View style={styles.socialIcons}>
+              <View style={styles.socialIcons}>
                   <TouchableOpacity style={styles.socialIcon} activeOpacity={0.7}>
                     <Text style={styles.socialIconText}>G</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.socialIcon} activeOpacity={0.7}>
                     <Text style={styles.socialIconText}>f</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.socialIcon} activeOpacity={0.7}>
-                    <Ionicons name="finger-print-outline" size={24} color={colors.orangeBase} />
-                  </TouchableOpacity>
-                </View>
+                <TouchableOpacity style={styles.socialIcon} activeOpacity={0.7}>
+                  <Ionicons name="finger-print-outline" size={24} color={colors.orangeBase} />
+                </TouchableOpacity>
               </View>
+            </View>
 
               {/* Login Link */}
               <View style={styles.loginContainer}>
                 <Text style={styles.loginText}>Already have an account? </Text>
-                <TouchableOpacity activeOpacity={0.7}>
+              <TouchableOpacity activeOpacity={0.7}>
                   <Text style={styles.loginLink}>Log in</Text>
-                </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
             </View>
           </View>
+        </View>
         </ScrollView>
       </View>
     </SafeAreaView>

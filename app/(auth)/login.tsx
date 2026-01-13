@@ -128,7 +128,7 @@ const Login = () => {
             </View>
           </View>
         </ScrollView>
-      </View>
+    </View>
     </SafeAreaView>
   )
 }
