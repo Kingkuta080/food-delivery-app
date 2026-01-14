@@ -334,9 +334,9 @@ const styles = StyleSheet.create({
   },
   menuIcon: {
     marginRight: 16,
-    width: 30,
-    height: 30,
-    borderRadius: 24,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
     backgroundColor: colors.background,
     alignItems: 'center',
     justifyContent: 'center',

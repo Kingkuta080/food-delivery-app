@@ -439,8 +439,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cancelButtonText: {
-    fontSize: 12,
-    fontWeight: '500',
+    fontSize: 14,
+    fontWeight: '700',
     color: colors.font2,
   },
   trackButton: {
@@ -452,8 +452,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   trackButtonText: {
-    fontSize: 12,
-    fontWeight: '500',
+    fontSize: 14,
+    fontWeight: '700',
     color: colors.orangeBase,
   },
   reviewButton: {
@@ -465,7 +465,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   reviewButtonText: {
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: '700',
     color: colors.font2,
   },
@@ -479,7 +479,7 @@ const styles = StyleSheet.create({
   },
   orderAgainButtonText: {
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: '700',
     color: colors.orangeBase,
   },
   emptyStateContainer: {
