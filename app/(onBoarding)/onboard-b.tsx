@@ -64,7 +64,7 @@ const OnboardB = () => {
             <TouchableOpacity 
               style={styles.nextButton} 
               activeOpacity={0.8}
-              onPress={() => router.push('/(onBoarding)/onboard-c')}
+              onPress={() => router.push('/(onboarding)/onboard-c')}
             >
               <Text style={styles.nextButtonText}>Next</Text>
             </TouchableOpacity>
